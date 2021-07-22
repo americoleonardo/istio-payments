@@ -1,0 +1,10 @@
+.idea
+
+brands/node_modules
+brands/package-lock.json
+
+payment-adapter-mastercard/node_modules
+payment-adapter-mastercard/package-lock.json
+
+payments/node_modules
+payments/package-lock.json
