@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-ms-istio-payments-dev
+  namespace: istio-payments-dev
+  labels:
+    app: payments-ms-istio-payments-dev
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-ms-istio-payments-dev
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: payments-ms-istio-payments-dev
+        version: v1
+    spec:
+      hostAliases:
+      - ip: "192.168.33.200"
+        hostnames:
+          - "loc.al"
+          - "brands-ms.loc.al"
+          - "payments-ms.loc.al"
+          - "payments-adapter-mastercard-ms.loc.al"
+      containers:
+        - name: payments-ms-istio-payments-dev
+          image: loc.al:5000/istio-payments/payments:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: 'URL_ADAPTER_MASTERCARD'
+              valueFrom:
+                configMapKeyRef:
+                  name: cm-payments
+                  key: URL_ADAPTER_MASTERCARD
+      imagePullSecrets:
+        - name: regcred

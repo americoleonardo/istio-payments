@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: payments-ms-istio-payments-dev
+  namespace: istio-payments-dev
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - hosts:
+      - payments-ms.loc.al
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+
+

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-payments-adapter-mastercard
+  namespace: istio-payments-dev
+data:
+  URL_BRANDS: http://brands-ms.loc.al/v1/brands

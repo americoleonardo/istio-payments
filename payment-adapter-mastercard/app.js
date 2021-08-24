@@ -33,6 +33,7 @@ app.post("/v1/transactions", async (req, res) => {
     }
 
     const { cardNumber } = req.body;
+    console.log(`requesting to ${URL_BRANDS}/${cardNumber}`);
     const { data } = await axios.get(`${URL_BRANDS}/${cardNumber}`);
 
     const transaction = createRandomTransaction(req.body, data);
@@ -41,6 +42,8 @@ app.post("/v1/transactions", async (req, res) => {
 
     return res.status(transaction.status == "denied" ? 400 : 200).json(transaction);
   } catch (e) {
+    console.log(`Error to request: ${URL_BRANDS}/${cardNumber}`);
+
     let status = 500;
 
     let message = "Ups! It was impossible to make a transaction.";

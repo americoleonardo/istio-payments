@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-payments
+  namespace: istio-payments-dev
+data:
+  URL_ADAPTER_MASTERCARD: http://payments-adapter-mastercard-ms.loc.al/v1/transactions

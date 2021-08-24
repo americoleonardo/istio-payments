@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: payments-adapter-mastercard-ms-istio-payments-dev
+    version: v1
+  name: payments-adapter-mastercard-ms-istio-payments-dev
+  namespace: istio-payments-dev
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: payments-adapter-mastercard-ms-istio-payments-dev
+    version: v1
+  type: ClusterIP

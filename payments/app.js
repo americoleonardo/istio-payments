@@ -16,7 +16,7 @@ const axios = require("axios");
 
 var requests = [];
 
-const {URL_ADAPTER_MASTERCARD} = process.env;
+const { URL_ADAPTER_MASTERCARD } = process.env;
 
 app.post("/v1/payments", async (req, res) => {
   try {
@@ -26,7 +26,7 @@ app.post("/v1/payments", async (req, res) => {
       amount: Joi.number()
     });
 
-    const {error} = schema.validate(req.body);
+    const { error } = schema.validate(req.body);
 
     if (error != undefined) {
       return res.status(400).json(error.details);

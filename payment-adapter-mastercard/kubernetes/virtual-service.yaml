@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: istio-payments-dev
+  name: payments-adapter-mastercard-ms-dev
+spec:
+  hosts:
+    - payments-adapter-mastercard-ms.loc.al
+  gateways:
+    - payments-adapter-mastercard-ms-istio-payments-dev
+  http:
+    - route:
+      - destination:
+          host: payments-adapter-mastercard-ms-istio-payments-dev

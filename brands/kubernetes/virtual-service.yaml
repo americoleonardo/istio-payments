@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: istio-payments-dev
+  name: brands-ms-dev
+spec:
+  hosts:
+    - brands-ms.loc.al
+  gateways:
+    - brands-ms-istio-payments-dev
+  http:
+    - route:
+      - destination:
+          host: brands-ms-istio-payments-dev
