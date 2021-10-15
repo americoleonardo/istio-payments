@@ -1,6 +1,9 @@
 # Istio payments
 
-Sample application with 3 microservices showcasing Kubernetes, Istio, microservice applications
+Sample application with 3 microservices showcasing Kubernetes, Istio, microservice applications.
+
+This application will work when you have a Kubernetes with Istio provided.
+
 
 # Installation
 
